@@ -1,0 +1,86 @@
+body{
+    background:#F1FAEE
+}
+aside{
+    float:left;
+    background:#E63946;
+    width: 15%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #F1FAEE;
+    border-right: 5px solid #A8DADC;
+}
+aside img{
+    width: 60px;
+    float: left;
+}
+aside .logo{
+font-size:40px;
+margin-left: 10px;
+font-weight: bold;
+position:relative;
+top: -5px;
+}
+aside h3{
+margin-top:50px;
+font-size: 30px;
+}
+
+aside ul {
+list-style: none;
+}
+aside ul li {
+    color:#F1FAEE;
+    display: block;
+    margin-top:20px;
+    text-decoration: none;
+    transition:all.6s ease;
+}
+aside ul a{
+text-decoration: none;
+}
+aside ul li:hover, aside ul a:hover{
+    color:#A8DADC;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+main .features{
+    float:center;
+    color:#1D3557;
+    margin-top: 100px;
+    text-align: center;
+    width:75%;
+}
+main .features h1{font-size: 50px;}
+main .features p{max-width: 800px; margin:20px auto}
+
+.alert-warning{
+    float: center;
+    clear: both;
+    width: 500px;
+    margin: 5px 34%;
+    text-align: center;
+}
+.btn-primary{
+
+    background-color: #A8DADC;
+    border: 5px solid #A8DADC;
+    color: #457B9D;
+
+}
+    .btn-primary:hover,
+
+    .btn-primary:focus,
+
+    .btn-primary:visited{
+    border: 5px solid #457B9D;
+    background-color: #457B9D;
+
+    color: #F1FAEE;
+
+}
+form{
+    margin-left: 32%;
+    width: 500px;
+    margin-top: 50px;
+}

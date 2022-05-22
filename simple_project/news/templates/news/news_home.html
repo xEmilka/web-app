@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Новости на сайте</h1>
+        {% for a in news %}
+            <div class="alert alert-warning">
+                <h3>{{ a.title }}</h3>
+                <p>{{ a.anons }}</p>
+                <a href="{% url 'news-detail' a.slug %}" class="btn btn-warning">Читать</a>
+                {% if a.photo %}
+                <p><img class = 'img-article-left thumb' src="{{a.photo.url}}"></p>
+                {% endif %}
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
