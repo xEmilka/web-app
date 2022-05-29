@@ -1,9 +1,13 @@
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
 from django.core import paginator
 from django.shortcuts import render,redirect
+from django.urls import reverse_lazy
+
 from .models import Articles
 from .models import Category
-from .forms import ArticlesForm
+from .forms import ArticlesForm, RegisterUserForm
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView  # Динамически изменяемые страницы
 # Create your views here.
 
@@ -82,3 +86,11 @@ class show_category(ListView):
 #     news = Articles.objects.filter(cat__slug=self.kwargs['cat_slug'])
 #     return render(request, 'news/news_home.html',{'news': news})
 
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'news/register.html'
+    success_url = reverse_lazy('login')
+
+class LoginUser(LoginView):
+    form_class = AuthenticationForm
+    Template_name = 'news/login.html'
