@@ -3,6 +3,8 @@
 {% block title %}Категории{% endblock %}
 
 {% block content %}
+{% load cache %}
+{% cache 120 sidebar %}
 {% if cat_selected == 0 %}
                 <li class="selected" >Все категории</li>
             {% else %}
@@ -16,4 +18,5 @@
                     <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
                 {% endif %}
             {% endfor %}
+{% endcache %}
 {% endblock %}

@@ -8,8 +8,9 @@ from django.urls import reverse_lazy
 
 from .models import Articles
 from .models import Category
-from .forms import ArticlesForm, RegisterUserForm, LoginUserForm
-from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView  # Динамически изменяемые страницы
+from .forms import ArticlesForm, RegisterUserForm, LoginUserForm, ContactForm
+from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView, \
+    FormView  # Динамически изменяемые страницы
 # Create your views here.
 
 
@@ -51,6 +52,14 @@ class Addpage(LoginRequiredMixin,CreateView):
     template_name = 'news/create.html'
     login_url = '/admin' #login_url = reverse_lazy
 
+class ContactFormView(FormView):
+    form_class = ContactForm
+    success_url = reverse_lazy('news_home')
+    template_name = 'news/ContactForm.html'
+
+    def form_valid (self, form):
+        print(form.cleaned_data)
+        return redirect('news_home')
 # def create(request):
 #     error = ''
 #     if request.method == 'POST':
