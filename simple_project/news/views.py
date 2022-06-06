@@ -1,4 +1,5 @@
-from django.contrib.auth.forms import AuthenticationForm
+# from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.core import paginator
@@ -7,7 +8,7 @@ from django.urls import reverse_lazy
 
 from .models import Articles
 from .models import Category
-from .forms import ArticlesForm, RegisterUserForm
+from .forms import ArticlesForm, RegisterUserForm, LoginUserForm
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView  # Динамически изменяемые страницы
 # Create your views here.
 
@@ -91,6 +92,15 @@ class RegisterUser(CreateView):
     template_name = 'news/register.html'
     success_url = reverse_lazy('login')
 
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('news_home')
+
 class LoginUser(LoginView):
-    form_class = AuthenticationForm
-    Template_name = 'news/login.html'
+    form_class =LoginUserForm
+    template_name = 'news/login.html'
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
